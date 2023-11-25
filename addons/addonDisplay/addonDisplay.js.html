@@ -8,9 +8,10 @@
         for (const addon of addons) {
             const addonContainer = document.createElement("div")
             addonContainer.innerHTML = `
+            <hr/>
             <h2>${addon.name}</h2>
-            <p>${addon.description}</p>
-            <p>${addon.author}</p>
+            <p>description:<strong>${addon.description}</strong></p>
+            <p>author:<strong>${addon.author}</strong></p>
             <p>to use this addon, copy the following code into your page: <strong>${addon.code}</strong></p>`
             body.appendChild(addonContainer)
         }
