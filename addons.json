@@ -18,8 +18,7 @@
             "description": "displays all the addons",
             "author": "isforme",
             "files": [
-                "https://raw.githubusercontent.com/daysgobye/isforme_addons/main/addons/hideinput/hideInput.js.html",
-                "https://raw.githubusercontent.com/daysgobye/isforme_addons/main/addons/hideinput/hideinput.css.html"
+                "https://raw.githubusercontent.com/daysgobye/isforme_addons/main/addons/addonDisplay/addonDisplay.js.html"
             ]
         }
     ]
