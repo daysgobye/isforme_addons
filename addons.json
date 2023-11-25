@@ -1,0 +1,15 @@
+{
+    "addons": [
+        {
+            "code": "aXNmb3JtZV9oaWRlaW5wdXQ=",
+            "name": "hideinput",
+            "version": "0.0.1",
+            "description": "Hides input from page",
+            "author": "isforme",
+            "files": [
+                "https://raw.githubusercontent.com/daysgobye/isforme_addons/main/addons/hideinput/hideInput.js.html",
+                "https://raw.githubusercontent.com/daysgobye/isforme_addons/main/addons/hideinput/hideinput.css.html"
+            ]
+        }
+    ]
+}
