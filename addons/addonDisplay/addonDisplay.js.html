@@ -2,8 +2,8 @@
     const show = async () => {
         const listUrl = "https://raw.githubusercontent.com/daysgobye/isforme_addons/main/addons.json"
         const response = await fetch(listUrl);
-        const addons = await response.json();
-        console.log(addons);
+        let addons = await response.json();
+        addons = addons.addons;
         const body = document.getElementById("messages")
         for (const addon of addons) {
             const addonContainer = document.createElement("div")
