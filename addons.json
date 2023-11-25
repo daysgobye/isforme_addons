@@ -1,7 +1,7 @@
 {
     "addons": [
         {
-            "code": "aXNmb3JtZV9oaWRlaW5wdXQ=",
+            "code": "addon:aXNmb3JtZV9oaWRlaW5wdXQ=",
             "name": "hideinput",
             "version": "0.0.1",
             "description": "Hides input from page",
