@@ -1,0 +1,17 @@
+<script>
+    const listUrl = "https://raw.githubusercontent.com/daysgobye/isforme_addons/main/addons.json"
+    const response = await fetch(listUrl);
+    const addons = await response.json();
+    console.log(addons);
+    const body = document.getElementById("messages")
+    for (const addon of addons) {
+        const addonContainer = document.createElement("div")
+        addonContainer.innerHTML = `<h2>${addon.name}</h2><p>${addon.description}</p>
+            <br/>
+            <p>${addon.author}</p>
+            <br/>
+            <p>to use this addon, copy the following code into your page: ${addon.code}</p>`
+        body.appendChild(addonContainer)
+    }
+
+</script>
