@@ -7,11 +7,11 @@
         const body = document.getElementById("messages")
         for (const addon of addons) {
             const addonContainer = document.createElement("div")
-            addonContainer.innerHTML = `<h2>${addon.name}</h2><p>${addon.description}</p>
-            <br/>
+            addonContainer.innerHTML = `
+            <h2>${addon.name}</h2>
+            <p>${addon.description}</p>
             <p>${addon.author}</p>
-            <br/>
-            <p>to use this addon, copy the following code into your page: ${addon.code}</p>`
+            <p>to use this addon, copy the following code into your page: <strong>${addon.code}</strong></p>`
             body.appendChild(addonContainer)
         }
     }
