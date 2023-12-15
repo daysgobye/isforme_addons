@@ -1,14 +1,34 @@
 {
     "addons": [
         {
+            "code": "addon:U2V0dGluZ3MgUGFuZWw6Y29sZQ==",
+            "name": "Settings Panel",
+            "version": "0.0.1",
+            "description": "Adds a settings panel to space",
+            "author": "Cole",
+            "files": [
+                "https://raw.githubusercontent.com/daysgobye/isforme_addons/main/addons/settings_panel/settings_panel.jshtml",
+            ]
+        },
+        {
             "code": "addon:aXNmb3JtZV9oaWRlaW5wdXQ=",
             "name": "hide input",
             "version": "0.0.1",
-            "description": "Hides input from page",
-            "author": "isforme",
+            "description": "Hides input from space",
+            "author": "Cole",
             "files": [
                 "https://raw.githubusercontent.com/daysgobye/isforme_addons/main/addons/hideinput/hideInput.js.html",
                 "https://raw.githubusercontent.com/daysgobye/isforme_addons/main/addons/hideinput/hideinput.css.html"
+            ]
+        },
+        {
+            "code": "addon:VGFpbHdpbmQ=",
+            "name": "Tailwind",
+            "version": "0.0.1",
+            "description": "Adds Tailwind to space",
+            "author": "Cole",
+            "files": [
+                "https://raw.githubusercontent.com/daysgobye/isforme_addons/main/addons/tailwind/tailwind.js.html"
             ]
         },
         {
@@ -16,7 +36,7 @@
             "name": "addon display",
             "version": "0.0.1",
             "description": "displays all the addons",
-            "author": "isforme",
+            "author": "Cole",
             "files": [
                 "https://raw.githubusercontent.com/daysgobye/isforme_addons/main/addons/addonDisplay/addonDisplay.js.html"
             ]
