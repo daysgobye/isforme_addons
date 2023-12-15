@@ -54,12 +54,16 @@
         newSettings.appendChild(document.createElement('hr'))
         settngsView.appendChild(newSettings)
     }
-    if (settngsView) {
-        Object.values(window.spaceSettings).forEach(setting => {
+    docReady(() => {
+        if (settngsView) {
+            Object.values(window.spaceSettings).forEach(setting => {
+                console.log("settings", setting)
+                addSettingsView(setting)
+            })
+        } else {
+            console.log("no settings panel")
+        }
+        window.spaceSettingsOnMount.forEach(cb => cb())
+    })
 
-            addSettingsView(setting)
-        })
-    } else {
-    }
-    window.spaceSettingsOnMount.forEach(cb => cb())
 </script>
