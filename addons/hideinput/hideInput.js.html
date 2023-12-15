@@ -1,7 +1,24 @@
 <script>
-    setTimeout(() => {
+    let isHidden = false
+    window.spaceSettings.hideInput = {
+        title: "Hide Input",
+        fieldType: "boolean",
+        description: "hidden",
+        value: isHidden,
+        onSave: (newValue) => {
+            isHidden = newValue
+            hideInputChange()
+        }
+    }
+    const hideInputChange = () => {
         const form = document.getElementsByClassName("fm-form")[0]
-        form.classList.add("hidden")
-    }, 100)
-
+        if (form) {
+            if (isHidden) {
+                form.classList.add("hidden")
+            } else {
+                form.classList.remove("hidden")
+            }
+        }
+    }
+    window.spaceSettingsOnMount.push(hideInputChange)
 </script>

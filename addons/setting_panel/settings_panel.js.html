@@ -9,11 +9,6 @@
     }
 </style>
 
-<script>
-    window.spaceSettings = {}
-</script>
-
-
 <div class="settings" x-data="{ open: false }">
     <button @click="open = ! open"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"
             clip-rule="evenodd">
@@ -60,19 +55,11 @@
         settngsView.appendChild(newSettings)
     }
     if (settngsView) {
-        window.spaceSettings.test1 = {
-            title: "your addon - feature here",
-            fieldType: "boolean",
-            description: "beep",
-            value: false,
-            onSave: (newValue) => console.log(newValue)
-        }
-
         Object.values(window.spaceSettings).forEach(setting => {
 
             addSettingsView(setting)
         })
     } else {
-        console.log("no settings")
     }
+    window.spaceSettingsOnMount.forEach(cb => cb())
 </script>

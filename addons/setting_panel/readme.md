@@ -14,8 +14,12 @@ window.spaceSettings.yourAddon={
     value:boolean|"string",
     onSave:(newValue:string|boolean)=>void
 }
-```
 
+```
+### Not required but you can set an on mount callback
+```js
+window.spaceSettingsOnMount.push(()=>{})
+```
 ## Storage
 Its good to remember this is a UI for changing settings not a storage for settings.
 That's why you set an onChange callback function for you to handle your own storage.
