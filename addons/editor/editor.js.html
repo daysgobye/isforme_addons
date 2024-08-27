@@ -18,9 +18,12 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
         height: 90%;
     }
 
-    .editor-controlls {
+    #editor-controlls {
         display: flex;
+        justify-content: space-between;
     }
+
+    #editor-submit {}
 </style>
 
 
@@ -29,7 +32,7 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
 
 
 <dialog>
-    <div class="editor-controlls">
+    <div id="editor-controlls">
         <select name="editor language" aria-label="Select your editor language">
             <option selected disabled value="">
                 language option
@@ -38,11 +41,11 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
             <option>markdown</option>
             <option>css</option>
         </select>
-        <button autofocus>Close</button>
+        <button autofocus>X</button>
     </div>
     <div id="editor">
     </div>
-    <form id="editor-submit">
+    <form class="fm-form" id="editor-submit">
         <input type="password" name="password" placeholder="Write Password" id="editor-writepw" />
         <input type="submit" value="save" />
     </form>
