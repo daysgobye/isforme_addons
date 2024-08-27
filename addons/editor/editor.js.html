@@ -25,7 +25,7 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
 
 
 <dialog id="editor-dialog">
-    <div class="editor-actions">
+    <fieldset class="grid">
         <select name="editor language" aria-label="Select your editor language">
             <option selected disabled value="">
                 language option
@@ -35,12 +35,13 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
             <option>css</option>
         </select>
         <button autofocus>Close</button>
-    </div>
+    </fieldset>
     <div id="editor">
     </div>
-    <div class="editor-post">
-
-    </div>
+    <fieldset role="group">
+        <input type="password" name="password" placeholder="write password" />
+        <input type="submit" value="save" />
+    </fieldset>
 </dialog>
 <button id="editor-open">Show the dialog</button>
 
