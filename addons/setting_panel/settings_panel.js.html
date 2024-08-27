@@ -59,7 +59,11 @@
                 input.type = "text"
                 input.value = settingsObject.value
             }
-            button.innerText = "save"
+            if (settingsObject.saveBtnText) {
+                button.innerText = settingsObject.saveBtnText
+            } else {
+                button.innerText = "save"
+            }
             button.addEventListener('click', (e) => {
                 if (settingsObject.fieldType === "boolean") {
                     settingsObject.onSave(input.checked)
