@@ -9,16 +9,13 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
     #editor-dialog {
         width: 70vw;
         height: 70vw;
-        position: relative;
-
+        display: flex;
+        flex-direction: column;
     }
 
     #editor {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
+        width: 100%;
+        height: 90%;
     }
 </style>
 
@@ -28,8 +25,21 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
 
 
 <dialog id="editor-dialog">
-    <button autofocus>Close</button>
+    <div class="editor-actions">
+        <select name="editor language" aria-label="Select your editor language">
+            <option selected disabled value="">
+                language option
+            </option>
+            <option>html</option>
+            <option>markdown</option>
+            <option>css</option>
+        </select>
+        <button autofocus>Close</button>
+    </div>
     <div id="editor">
+    </div>
+    <div class="editor-post">
+
     </div>
 </dialog>
 <button id="editor-open">Show the dialog</button>
@@ -39,17 +49,25 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
     const dialog = document.querySelector("#editor-dialog");
     const showButton = document.querySelector("#editor-open");
     const closeButton = document.querySelector("dialog button");
+    const languageChange = document.querySelector("dialog select");
+    const editor = ace.edit("editor");
+
 
     // "Show the dialog" button opens the dialog modally
     showButton.addEventListener("click", () => {
         dialog.showModal();
     });
-
     // "Close" button closes the dialog
     closeButton.addEventListener("click", () => {
         dialog.close();
     });
-    var editor = ace.edit("editor");
+    languageChange.addEventListener("change", () => {
+        console.log(languageChange.value)
+        editor.session.setMode(`ace/mode/${languageChange.value}`);
+
+    })
+
+
     editor.setTheme("ace/theme/monokai");
     editor.session.setMode("ace/mode/html");
 </script>
