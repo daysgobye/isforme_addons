@@ -8,7 +8,7 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
 <style type="text/css" media="screen">
     #editor-dialog {
         width: 70vw;
-        height: 70vw;
+        height: 70vh;
         display: flex;
         flex-direction: column;
     }
@@ -16,6 +16,10 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
     #editor {
         width: 100%;
         height: 90%;
+    }
+
+    .editor-controlls {
+        display: flex;
     }
 </style>
 
@@ -25,7 +29,7 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
 
 
 <dialog id="editor-dialog">
-    <fieldset class="grid">
+    <div class="editor-controlls">
         <select name="editor language" aria-label="Select your editor language">
             <option selected disabled value="">
                 language option
@@ -35,13 +39,17 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
             <option>css</option>
         </select>
         <button autofocus>Close</button>
-    </fieldset>
+    </div>
     <div id="editor">
     </div>
-    <fieldset role="group">
-        <input type="password" name="password" placeholder="write password" />
-        <input type="submit" value="save" />
-    </fieldset>
+    <form>
+
+        <fieldset role="group">
+            <input type="password" name="password" placeholder="write password" />
+            <input type="submit" value="save" />
+        </fieldset>
+    </form>
+
 </dialog>
 <button id="editor-open">Show the dialog</button>
 
@@ -65,7 +73,6 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
     languageChange.addEventListener("change", () => {
         console.log(languageChange.value)
         editor.session.setMode(`ace/mode/${languageChange.value}`);
-
     })
 
 
