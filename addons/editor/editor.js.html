@@ -43,15 +43,22 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
     <div id="editor">
     </div>
     <form id="editor-submit">
+        <input type="password" name="password" placeholder="Write Password" id="editor-writepw" />
         <input type="submit" value="save" />
     </form>
 </dialog>
 
 <script>
-    let writePw = ""
+    let readPw = ""
+
+    const onOpen = (readPw) => {
+        readPw
+        dialog.showModal();
+        // fetch(`${origin}/api/raw${pathname}`)
+
+    }
 
     const { origin, pathname } = window.location
-    // fetch(`${origin}/api/raw${pathname}`)
     const dialog = document.querySelector("dialog");
     const showButton = document.getElementById("editor-open");
     const closeButton = document.querySelector("dialog button");
@@ -60,26 +67,24 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
     const editor = ace.edit("editor");
 
     window.spaceSettings.editor = {
-        title: "Editor write password",
+        title: "Open Editor Read Password",
         fieldType: "string",
-        description: "open the full page editor",
+        description: "Open the full page editor",
         savebtnText: "Open",
-        value: writePw,
+        value: readPw,
         onSave: (newValue) => {
-            writePw = newValue
-            dialog.showModal();
+            onOpen(newValue)
         }
     }
+
     fourm.addEventListener("submit", (e) => {
+        const writepw = document.getElementById("editor-writepw").value
         e.preventDefault();
         console.log(writepw)
         dialog.close();
 
     });
-    // // "Show the dialog" button opens the dialog modally
-    // showButton.addEventListener("click", () => {
-    // });
-    // "Close" button closes the dialog
+
     closeButton.addEventListener("click", () => {
         dialog.close();
     });
