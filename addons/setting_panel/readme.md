@@ -12,7 +12,7 @@ window.spaceSettings.yourAddon={
     fieldType:"boolean"|"string"|"custom",
     description:"",
     value:boolean|"string",
-    savebtnText:"string"|undefined,
+    saveBtnText:"string"|undefined,
     onSave:(newValue:string|boolean)=>void
 }
 
