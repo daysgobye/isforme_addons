@@ -42,7 +42,7 @@
             ]
         },
         {
-            "code": "addon:YWRkb24gZGlzcGxheTppc2Zvcm1ledit",
+            "code": "addon:editor",
             "name": "editor",
             "version": "0.0.1",
             "description": "displays all the addons",
