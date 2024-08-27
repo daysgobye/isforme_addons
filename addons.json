@@ -40,6 +40,16 @@
             "files": [
                 "https://raw.githubusercontent.com/daysgobye/isforme_addons/main/addons/addonDisplay/addonDisplay.js.html"
             ]
+        },
+        {
+            "code": "addon:YWRkb24gZGlzcGxheTppc2Zvcm1ledit",
+            "name": "editor",
+            "version": "0.0.1",
+            "description": "displays all the addons",
+            "author": "Cole",
+            "files": [
+                "https://raw.githubusercontent.com/daysgobye/isforme_addons/main/addons/addonDisplay/addonDisplay.js.html"
+            ]
         }
     ]
 }
