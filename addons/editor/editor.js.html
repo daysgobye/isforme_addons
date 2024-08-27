@@ -6,12 +6,12 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
 " rel="stylesheet">
 
 <style type="text/css" media="screen">
-    #editor-dialog {
-        width: 70vw;
-        height: 70vh;
+    dialog[open] {
         display: flex;
         flex-direction: column;
     }
+
+    #editor-open {}
 
     #editor {
         width: 100%;
@@ -28,7 +28,7 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
 
 
 
-<dialog id="editor-dialog">
+<dialog>
     <div class="editor-controlls">
         <select name="editor language" aria-label="Select your editor language">
             <option selected disabled value="">
@@ -43,10 +43,8 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
     <div id="editor">
     </div>
     <form id="editor-submit">
-        <fieldset role="group">
-            <input type="password" name="password" placeholder="write password" />
-            <input type="submit" value="save" />
-        </fieldset>
+        <input type="password" name="password" class="writepw" placeholder="write password" />
+        <input type="submit" value="save" />
     </form>
 
 </dialog>
@@ -64,7 +62,8 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
 
     fourm.addEventListener("submit", (e) => {
         e.preventDefault();
-        console.log(e)
+        const writepw = document.querySelector("#editor-submit writepw");
+        console.log(writepw)
         dialog.close();
 
     });
