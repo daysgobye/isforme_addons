@@ -87,6 +87,11 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
 
         }
     }
+    const onClose = (messages = []) => {
+        const messageContainer = document.getElementById("messages")
+        const messagesForBody = messages.map((message, index) => `<div data-id="${index}" class="fm-message">${message}</div>`)
+        messageContainer.innerHTML = messagesForBody
+    }
     window.spaceSettings.editor = {
         title: "Open Editor Read Password",
         fieldType: "string",
@@ -98,7 +103,7 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
         }
     }
 
-    fourm.addEventListener("submit", (e) => {
+    fourm.addEventListener("submit", async (e) => {
         console.log("SUBMIT")
         e.preventDefault();
         const writepw = document.getElementById("editor-writepw").value
@@ -110,7 +115,8 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
                 rawMessages.push(EDITORMESSAGE + value)
             }
             try {
-                isMySpaceClient.apiPost(userReadPw, writepw, rawMessages)
+                const responce = await isMySpaceClient.apiPost(userReadPw, writepw, rawMessages)
+                onClose(responce.handledMessages)
                 dialog.close();
             } catch (error) {
                 console.log(error)
@@ -118,8 +124,6 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
         } else {
             console.error("no editor")
         }
-
-
     });
 
     closeButton.addEventListener("click", () => {
