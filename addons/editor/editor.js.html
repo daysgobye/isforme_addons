@@ -54,8 +54,8 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
         <input type="submit" value="save" />
     </form>
 </dialog>
-
 <script>
+    const EDITORMESSAGE = "<!-- EDITORMESSAGE: -->"
     let userReadPw = ""
     let rawMessages = []
     let editorMessageIndex = undefined
@@ -76,11 +76,11 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
         try {
             const responce = await isMySpaceClient.apiGetRaw(readPw)
             rawMessages = responce.messages
-            editorMessageIndex = rawMessages.indexOf(message => message.startsWith("EDITORMESSAGE:"))
+            editorMessageIndex = rawMessages.indexOf(message => message.startsWith(EDITORMESSAGE))
             const editorMessage = rawMessages[editorMessageIndex]
             console.log({ rawMessages, editorMessageIndex, editorMessage })
             if (editorMessage) {
-                editor.setValue(editorMessage.substring(14))
+                editor.setValue(editorMessage.substring(EDITORMESSAGE.length))
             }
             dialog.showModal();
         } catch (error) {
@@ -105,9 +105,9 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
         if (editor) {
             const value = editor.getValue()
             if (editorMessageIndex !== -1) {
-                rawMessages[editorMessageIndex] = "EDITORMESSAGE:" + value
+                rawMessages[editorMessageIndex] = EDITORMESSAGE + value
             } else {
-                rawMessages.push("EDITORMESSAGE:" + value)
+                rawMessages.push(EDITORMESSAGE + value)
             }
             try {
                 isMySpaceClient.apiPost(userReadPw, writepw, rawMessages)
