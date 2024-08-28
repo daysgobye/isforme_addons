@@ -111,7 +111,7 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
                 rawMessages.push("EDITORMESSAGE:" + value)
             }
             try {
-                isMySpaceClient.apiPost(readPw, writepw, rawMessages)
+                isMySpaceClient.apiPost(userReadPw, writepw, rawMessages)
                 dialog.close();
             } catch (error) {
                 console.log(error)
