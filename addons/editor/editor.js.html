@@ -72,6 +72,8 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
     const onOpen = async (readPw) => {
         userReadPw = readPw
         editor = ace.edit("editor");
+        editor.setTheme("ace/theme/monokai");
+        editor.session.setMode("ace/mode/html");
         try {
             const responce = await isMySpaceClient.apiGetRaw(readPw)
             rawMessages = responce.messages
@@ -130,6 +132,5 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
     })
 
 
-    editor.setTheme("ace/theme/monokai");
-    editor.session.setMode("ace/mode/html");
+
 </script>

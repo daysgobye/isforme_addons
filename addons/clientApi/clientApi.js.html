@@ -35,11 +35,13 @@
          * }
          */
         async apiGet(readPassword) {
-            const myHeaders = new Headers();
-            myHeaders.append("Authorization", readPassword);
+
             const requestOptions = {
                 method: "GET",
-                headers: myHeaders,
+                headers: {
+                    'Authorization': `Bearer ${readPassword}`,
+                    'Content-Type': 'application/json',
+                },
                 redirect: "follow"
             };
             const response = await fetch(this.apiUrl, requestOptions);
@@ -61,11 +63,13 @@
          * }
          */
         async apiGetRaw(readPassword) {
-            const myHeaders = new Headers();
-            myHeaders.append("Authorization", readPassword);
+
             const requestOptions = {
                 method: "GET",
-                headers: myHeaders,
+                headers: {
+                    'Authorization': `Bearer ${readPassword}`,
+                    'Content-Type': 'application/json',
+                },
                 redirect: "follow"
             };
             const response = await fetch(this.rawApiUrl, requestOptions);
@@ -92,10 +96,6 @@
          * }
          */
         async apiPost(readPassword, writePassword, messages) {
-            const myHeaders = new Headers();
-            myHeaders.append("Content-Type", "application/json");
-            myHeaders.append("Authorization", readPassword);
-
             const raw = JSON.stringify({
                 writePw: writePassword,
                 messages: messages
@@ -103,7 +103,10 @@
 
             const requestOptions = {
                 method: "POST",
-                headers: myHeaders,
+                headers: {
+                    'Authorization': `Bearer ${readPassword}`,
+                    'Content-Type': 'application/json',
+                },
                 body: raw,
                 redirect: "follow"
             };
