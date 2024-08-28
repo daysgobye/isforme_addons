@@ -116,7 +116,9 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
             }
             try {
                 const responce = await isMySpaceClient.apiPost(userReadPw, writepw, rawMessages)
+                console.log(responce)
                 onClose(responce.handledMessages)
+
                 dialog.close();
             } catch (error) {
                 console.log(error)
