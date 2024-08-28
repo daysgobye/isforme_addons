@@ -76,7 +76,7 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
         try {
             const responce = await isMySpaceClient.apiGetRaw(readPw)
             rawMessages = responce.messages
-            editorMessageIndex = rawMessages.indexOf(message => message.startsWith(EDITORMESSAGE))
+            editorMessageIndex = rawMessages.findIndex(message => message.startsWith(EDITORMESSAGE))
             const editorMessage = rawMessages[editorMessageIndex]
             console.log({ rawMessages, editorMessageIndex, editorMessage })
             if (editorMessage) {
