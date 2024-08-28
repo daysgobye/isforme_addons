@@ -48,6 +48,7 @@
             "description": "displays all the addons",
             "author": "Cole",
             "files": [
+                "https://raw.githubusercontent.com/daysgobye/isforme_addons/main/addons/clientApi/ClientApi.js.html",
                 "https://raw.githubusercontent.com/daysgobye/isforme_addons/main/addons/editor/editor.js.html",
                 "https://raw.githubusercontent.com/daysgobye/isforme_addons/main/addons/setting_panel/settings_panel.js.html"
             ]

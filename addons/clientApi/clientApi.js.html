@@ -1,0 +1,120 @@
+<script>
+    /**
+     * IsMySpaceClient class interacts with the IsMySpace API.
+     * It constructs API URLs based on the current window location and provides methods to make GET and POST requests.
+     */
+    class IsMySpaceClient {
+        origin = ""
+        pathname = ""
+        apiUrl = ""
+        rawApiUrl = ""
+
+        constructor() {
+            const { origin, pathname } = window.location
+            this.origin = origin
+            this.pathname = pathname
+            this.rawApiUrl = `${origin}/api/raw${pathname}`
+            this.apiUrl = `${origin}/api${pathname}`
+
+        }
+
+
+        /**
+         * Makes a GET request to the standard API endpoint to retrieve processed messages.
+         * If the message is in markdown, this method returns HTML ready to be rendered.
+         * 
+         * @param {string} readPassword - The read authorization password for the API.
+         * 
+         * @returns {Promise<{path: string, messages: string[]}>} 
+         *   A promise that resolves to an object containing the path and an array of processed messages.
+         * 
+         * Example return value:
+         * {
+         *   path: "string",
+         *   messages: ["<p>processed message 1</p>", "<p>processed message 2</p>"]
+         * }
+         */
+        async apiGet(readPassword) {
+            const myHeaders = new Headers();
+            myHeaders.append("Authorization", readPassword);
+            const requestOptions = {
+                method: "GET",
+                headers: myHeaders,
+                redirect: "follow"
+            };
+            const response = await fetch(this.apiUrl, requestOptions);
+            const result = await response.json()
+            return result
+        }
+        /**
+         * Makes a GET request to the raw API endpoint to retrieve raw messages as typed.
+         * 
+         * @param {string} readPassword - The read authorization password for the API.
+         * 
+         * @returns {Promise<{path: string, messages: string[]}>} 
+         *   A promise that resolves to an object containing the path and an array of raw messages.
+         * 
+         * Example return value:
+         * {
+         *   path: "string",
+         *   messages: ["# raw message 1", "## raw message 2"]
+         * }
+         */
+        async apiGetRaw(readPassword) {
+            const myHeaders = new Headers();
+            myHeaders.append("Authorization", readPassword);
+            const requestOptions = {
+                method: "GET",
+                headers: myHeaders,
+                redirect: "follow"
+            };
+            const response = await fetch(this.rawApiUrl, requestOptions);
+            const result = await response.json()
+            return result
+        }
+        /**
+         * Makes a POST request to the standard API endpoint to send messages.
+         * This method takes in raw messages and returns both raw and handled (processed) messages.
+         * 
+         * @param {string} readPassword - The read authorization password for the API.
+         * @param {string} writePassword - The write authorization password for the API.
+         * @param {Array<string>} messages - An array of messages to be sent in the POST request body.
+         * 
+         * @returns {Promise<{path: string, rawMessages: string[], handledMessages: string[]}>} 
+         *   A promise that resolves to an object containing the path, raw messages, 
+         *   and handled (processed) messages.
+         * 
+         * Example return value:
+         * {
+         *   path: "string",
+         *   rawMessages: ["string1", "string2"],
+         *   handledMessages: ["<p>processed string1</p>", "<p>processed string2</p>"]
+         * }
+         */
+        async apiPost(readPassword, writePassword, messages) {
+            const myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+            myHeaders.append("Authorization", readPassword);
+
+            const raw = JSON.stringify({
+                writePw: writePassword,
+                messages: messages
+            });
+
+            const requestOptions = {
+                method: "POST",
+                headers: myHeaders,
+                body: raw,
+                redirect: "follow"
+            };
+
+            const response = await fetch(this.apiUrl, requestOptions);
+            const result = await response.text();
+
+            return result
+        }
+
+    }
+    const isMySpaceClient = new IsMySpaceClient()
+
+</script>

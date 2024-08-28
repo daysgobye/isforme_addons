@@ -57,16 +57,10 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
 </dialog>
 
 <script>
-    let readPw = ""
+    let userReadPw = ""
+    let rawMessages = []
+    let editorMessageIndex = undefined
 
-    const onOpen = (readPw) => {
-        readPw
-        dialog.showModal();
-        // fetch(`${origin}/api/raw${pathname}`)
-
-    }
-
-    const { origin, pathname } = window.location
     const dialog = document.querySelector("dialog");
     const showButton = document.getElementById("editor-open");
     const closeButton = document.querySelector("dialog button");
@@ -74,6 +68,23 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
     const fourm = document.getElementById("editor-submit");
     const editor = ace.edit("editor");
 
+
+    const onOpen = async (readPw) => {
+        userReadPw = readPw
+        try {
+            const responce = await isMySpaceClient.apiGetRaw(readPw)
+            rawMessages = responce.messages
+            editorMessageIndex = rawMessages.indexOf(message => message.startsWith("EDITORMESSAGE:"))
+            const editorMessage = rawMessages[editorMessageIndex]
+            console.log({ rawMessages, editorMessageIndex, editorMessage })
+            if (editorMessage) {
+                editor.setValue(editorMessage.substring(14))
+            }
+            dialog.showModal();
+        } catch (error) {
+
+        }
+    }
     window.spaceSettings.editor = {
         title: "Open Editor Read Password",
         fieldType: "string",
@@ -86,10 +97,18 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
     }
 
     fourm.addEventListener("submit", (e) => {
-        const writepw = document.getElementById("editor-writepw").value
         e.preventDefault();
-        console.log(writepw)
-        dialog.close();
+        const writepw = document.getElementById("editor-writepw").value
+        const value = editor.getValue()
+        if (editorMessageIndex) {
+            rawMessages[editorMessageIndex] = "EDITORMESSAGE:" + value
+        }
+        try {
+            isMySpaceClient.apiPost(readPw, writepw, rawMessages)
+            dialog.close();
+        } catch (error) {
+
+        }
 
     });
 
