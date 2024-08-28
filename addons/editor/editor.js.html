@@ -103,9 +103,8 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
         e.preventDefault();
         const writepw = document.getElementById("editor-writepw").value
         if (editor) {
-
             const value = editor.getValue()
-            if (editorMessageIndex) {
+            if (editorMessageIndex !== -1) {
                 rawMessages[editorMessageIndex] = "EDITORMESSAGE:" + value
             } else {
                 rawMessages.push("EDITORMESSAGE:" + value)
@@ -114,7 +113,7 @@ https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/css/ace.min.css
                 isMySpaceClient.apiPost(readPw, writepw, rawMessages)
                 dialog.close();
             } catch (error) {
-
+                console.log(error)
             }
         } else {
             console.error("no editor")
