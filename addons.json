@@ -45,7 +45,7 @@
             "code": "addon:editor",
             "name": "editor",
             "version": "0.0.1",
-            "description": "displays all the addons",
+            "description": "Adds a full page editor to create and update your page.",
             "author": "Cole",
             "files": [
                 "https://raw.githubusercontent.com/daysgobye/isforme_addons/main/addons/clientApi/clientApi.js.html",
