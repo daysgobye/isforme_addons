@@ -112,7 +112,7 @@
             };
 
             const response = await fetch(this.apiUrl, requestOptions);
-            const result = await response.text();
+            const result = await response.json();
 
             return result
         }
